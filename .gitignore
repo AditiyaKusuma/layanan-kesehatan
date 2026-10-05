@@ -1,0 +1,13 @@
+# Environment
+.env
+
+# Virtual environment
+.venv/
+
+# Python cache
+__pycache__/
+*.pyc
+
+# Alembic cache
+alembic/__pycache__/
+alembic/versions/__pycache__/
