@@ -19,6 +19,7 @@ class PasienCreate(BaseModel):
     no_telepon: str | None = None
     alamat: str | None = None
     id_user: int | None = None
+    email: str | None = None
 
 
 @router.get("/")
@@ -37,7 +38,8 @@ def get_pasien():
                 tgl_lahir,
                 jenis_kelamin,
                 no_telepon,
-                alamat
+                alamat,
+                email
             FROM pasien
             ORDER BY id_pasien
         """)
@@ -68,7 +70,8 @@ def get_pasien_by_id(id_pasien: int):
                 tgl_lahir,
                 jenis_kelamin,
                 no_telepon,
-                alamat
+                alamat,
+                email
             FROM pasien
             WHERE id_pasien = %s
         """, (id_pasien,))
@@ -106,9 +109,10 @@ def create_pasien(data: PasienCreate):
                 tgl_lahir,
                 jenis_kelamin,
                 no_telepon,
-                alamat
+                alamat,
+                email
             )
-            VALUES (%s, %s, %s, %s, %s, %s, %s)
+            VALUES (%s, %s, %s, %s, %s, %s, %s, %s)
         """, (
             data.id_user,
             data.nik,
@@ -116,7 +120,8 @@ def create_pasien(data: PasienCreate):
             data.tgl_lahir,
             data.jenis_kelamin,
             data.no_telepon,
-            data.alamat
+            data.alamat,
+            data.email
         ))
 
         connection.commit()
